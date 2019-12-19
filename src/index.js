@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import App from './App.svelte';
+import CollectionListView from './CollectionListView.svelte';
 
 var app = {
     // Application Constructor
@@ -55,11 +55,11 @@ app.initialize();
 
 
 
-const svelteApp = new App({
-	target: document.querySelector("#app"),
+const mainView = new CollectionListView({
+	target: document.querySelector("#view"),
 	props: {
 		name: 'Martin'
 	}
 });
 
-export default svelteapp;
+export default mainView;
