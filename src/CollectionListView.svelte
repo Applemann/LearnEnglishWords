@@ -21,7 +21,7 @@
             <h3>Download</h3>
         </center>
     </div>
-    <div on:click={() => continueButton()} id="continue-button" style="display: none;">
+    <div on:click="{() => dispatch('changeView', {view: "CategoryListView"})}" id="continue-button" style="display: none;">
         <center>
             <h3>Continue</h3>
         </center>
@@ -29,6 +29,9 @@
 </div>
 
 <script>
+  import { createEventDispatcher } from 'svelte';
+  const dispatch = createEventDispatcher();
+
   export let current;
   let collectionItems = [
     {label: "Basic (1000 words)", description: "Obsahuje vsechna zakladni anglicka slovicka pro zakladni komunikaci a dorozumeni. "},
@@ -43,8 +46,7 @@
     //downloadButton.style.display = "block";
     continueButton.style.display = "block";
   }
-  function continueButton() {
-  }
+
 </script>
 
 <style>
