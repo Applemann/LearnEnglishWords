@@ -2,6 +2,8 @@
   <CollectionListView on:changeView={changeView} />
 {:else if currentView === "CategoryListView"}
   <CategoryListView on:changeView={changeView} />
+{:else if currentView === "CategoryDetailView"}
+  <CategoryDetailView on:changeView={changeView} categoryName={viewData.name} />
 {/if}
 
 
@@ -9,19 +11,22 @@
 <script>
 import CollectionListView from './CollectionListView.svelte';
 import CategoryListView from './CategoryListView.svelte';
+import CategoryDetailView from './CategoryDetailView.svelte';
 
 let history = [];
 export let currentView = "CollectionListView"
+export let viewData
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function changeView(event) {
-  setView(event.detail.view);
+  setView(event.detail.view, event.detail.data);
 }
 
-function setView(view) {
+function setView(view, data) {
   history.push(currentView);
   currentView = view;
+  viewData = data
 }
 
 function onDeviceReady() {
