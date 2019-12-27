@@ -12,6 +12,15 @@
   </ModeSelect>
 </Container>
 
+<Container>
+  Word limit: 
+  <select bind:value={wordLimit}>
+    {#each limitList as limit}
+      <option value={limit}> {limit} </option>
+    {/each}
+  </select>
+</Container>
+
 <Button id="category-start-button" color="green" on:click="{startCategory}"> Start Category </Button>
 
 
@@ -22,6 +31,8 @@
   import StatisticsTable from '../components/StatisticsTable.svelte';
   import ModeSelect from '../components/ModeSelect.svelte';
   export let categoryName;
+  let limitList = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+  let wordLimit = 30;
 
   let modes = [
     {name: "Reading", translation: "(AJ -> CJ)", visible: true},
