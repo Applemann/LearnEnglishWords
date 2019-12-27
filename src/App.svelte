@@ -1,43 +1,45 @@
-{#if currentView === "CollectionListView"}
-  <CollectionListView on:changeView={changeView} />
-{:else if currentView === "CategoryListView"}
-  <CategoryListView on:changeView={changeView} />
-{:else if currentView === "CategoryDetailView"}
-  <CategoryDetailView on:changeView={changeView} categoryName={viewData.name} />
-{/if}
-
+<div class="view">
+  {#if currentView === "CollectionListView"}
+    <CollectionListView on:changeView={changeView} />
+  {:else if currentView === "CategoryListView"}
+    <CategoryListView on:changeView={changeView} />
+  {:else if currentView === "CategoryDetailView"}
+    <CategoryDetailView on:changeView={changeView} categoryName={viewData.name} />
+  {/if}
+</div>
 
 
 <script>
-import CollectionListView from './CollectionListView.svelte';
-import CategoryListView from './CategoryListView.svelte';
-import CategoryDetailView from './CategoryDetailView.svelte';
+  import CollectionListView from './views/CollectionListView.svelte';
+  import CategoryListView from './views/CategoryListView.svelte';
+  import CategoryDetailView from './views/CategoryDetailView.svelte';
 
-let history = [];
-export let currentView = "CollectionListView"
-export let viewData
+  export let currentView
+  export let viewData
 
-document.addEventListener("deviceready", onDeviceReady, false);
+  let history = [];
 
-function changeView(event) {
-  setView(event.detail.view, event.detail.data);
-}
+  document.addEventListener("deviceready", onDeviceReady, false);
 
-function setView(view, data) {
-  history.push(currentView);
-  currentView = view;
-  viewData = data
-}
-
-function onDeviceReady() {
-    document.addEventListener("backbutton", onBackKeyDown, false);
-}
-
-function onBackKeyDown() {
-  if (history.length > 0) {
-    setView(history.pop());
+  function changeView(event) {
+    setView(event.detail.view, event.detail.data);
   }
-}
+
+  function setView(view, data) {
+    history.push(currentView);
+    currentView = view;
+    viewData = data
+  }
+
+  function onDeviceReady() {
+    document.addEventListener("backbutton", onBackKeyDown, false);
+  }
+
+  function onBackKeyDown() {
+    if (history.length > 0) {
+      setView(history.pop());
+    }
+  }
 </script>
 
 

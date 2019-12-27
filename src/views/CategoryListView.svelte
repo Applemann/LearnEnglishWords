@@ -1,17 +1,19 @@
-<div id="select-category-view" class="view">
-  <h1 style="padding-top: 20pt">Select category:</h1>
+<Title> {title} </Title>
 
-  <div style="text-align:center; padding-top: 20pt; padding-right: 30pt">
-    <ul id="category-list" style="list-style-type: none;">
+<div style="text-align:center; padding-top: 20pt; padding-right: 30pt">
+  <ul id="category-list" style="list-style-type: none;">
     {#each categoryItems as category, id}
       <li on:click="{() => dispatch('changeView', {view: "CategoryDetailView", data: category})}" class="category-item"> {category.name} ({category.wordsNum} words) </li>
     {/each}
-    </ul>
-  </div>
+  </ul>
 </div>
 
+
 <script>
+  import Title from '../common/Title.svelte';
   import { createEventDispatcher } from 'svelte';
+  export let title = "Select category:";
+
   const dispatch = createEventDispatcher();
 
   let categoryItems = [
@@ -26,6 +28,7 @@
     {name: "Body", wordsNum: 30}
   ];
 </script>
+
 
 <style>
 .category-item {

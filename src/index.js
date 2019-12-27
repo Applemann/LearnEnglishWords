@@ -22,7 +22,9 @@ import App from './App.svelte';
 var app = new App({
 	target: document.querySelector("#view"),
 	props: {
-		name: 'Martin'
+    //currentView: "CollectionListView",
+    currentView: "CategoryDetailView",
+    viewData: { name: "Food", wordsNum: 150 }
 	}
 });
 
