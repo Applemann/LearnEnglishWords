@@ -23,7 +23,8 @@ var app = new App({
 	target: document.querySelector("#view"),
 	props: {
     //currentView: "CollectionListView",
-    currentView: "CategoryDetailView",
+    //currentView: "CategoryDetailView",
+    currentView: "PracticeView",
     viewData: { name: "Food", wordsNum: 150 }
 	}
 });

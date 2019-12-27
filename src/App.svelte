@@ -5,6 +5,8 @@
     <CategoryListView on:changeView={changeView} />
   {:else if currentView === "CategoryDetailView"}
     <CategoryDetailView on:changeView={changeView} categoryName={viewData.name} />
+  {:else if currentView === "PracticeView"}
+    <PracticeView on:changeView={changeView}/>
   {/if}
 </div>
 
@@ -13,6 +15,7 @@
   import CollectionListView from './views/CollectionListView.svelte';
   import CategoryListView from './views/CategoryListView.svelte';
   import CategoryDetailView from './views/CategoryDetailView.svelte';
+  import PracticeView from './views/PracticeView.svelte';
 
   export let currentView
   export let viewData

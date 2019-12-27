@@ -30,7 +30,12 @@
   import Button from '../common/Button.svelte';
   import StatisticsTable from '../components/StatisticsTable.svelte';
   import ModeSelect from '../components/ModeSelect.svelte';
+  import { createEventDispatcher } from 'svelte';
+
   export let categoryName;
+
+  const dispatch = createEventDispatcher();                              
+
   let limitList = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
   let wordLimit = 30;
 
@@ -42,7 +47,7 @@
   ]
 
   function startCategory() {
-    alert("start category");
+    dispatch('changeView', {view: "PracticeView"})
   }
 </script>
 
