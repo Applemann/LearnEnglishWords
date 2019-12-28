@@ -5,7 +5,7 @@
     </td>
     <td> 
       <center>
-        <WordDetailView width="60%"/>
+        <WordDetail width="60%"/>
       </center>
     </td>
     <td> 
@@ -18,7 +18,7 @@
 <QuestionDialog/>
 
 <script>
-  import WordDetailView from './WordDetailView.svelte';
+  import WordDetail from '../components/WordDetail.svelte';
   import Wall from '../components/Wall.svelte';
   import QuestionDialog from '../components/QuestionDialog.svelte';
   let wallVisible = true;
