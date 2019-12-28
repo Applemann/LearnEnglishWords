@@ -1,33 +1,36 @@
+{#if visible}
 
 <div style="width: {width}">
-<Container>
-  <Title><b>attraction</b></Title>
+  <Container>
+    <Title><b>{word.text}</b></Title>
 
-  <div class="sound">[ əˈtrækʃən ]   &#x1F509;</div>
-</Container>
+    <div class="sound">[ {word.pronunciation} ]   &#x1F509;</div>
+  </Container>
 
 
-<center>
-<Container label="Vyznamy:" paddingTop="15pt">
-  <div class="sense descriptions">
-    <ul>
-      <li> pritazlivost </li>
-      <li> puvab, kouzlo </li>
-      <li> atrakce, zajimavost </li>
-    </ul>
-  </div>
-</Container>
+  <center>
+    <Container label="Vyznamy:" paddingTop="15pt">
+      <div class="sense descriptions">
+        <ul>
+          {#each word.sense as sense}
+            <li> {sense} </li>
+          {/each}
+        </ul>
+      </div>
+    </Container>
 
-<Container label="Priklady:" paddingTop="10pt">
-<ul class="descriptions">
-  <li> Maybe that was the attraction she felt for people like Yancey and Allen. </li>
-  <li> That physical attraction was responsible for the pounding of her heart right now. </li>
-</ul>
-</Container>
+    <Container label="Priklady:" paddingTop="10pt">
+      <ul class="descriptions">
+        {#each word.examples as example}
+          <li> {example} </li>
+        {/each}
+      </ul>
+    </Container>
 
-</center>
+  </center>
 </div>
 
+{/if}
 
 
 <script>
@@ -36,6 +39,9 @@
   import Button from '../common/Button.svelte';
 
   export let width = "100%";
+  export let word; 
+  export let visible = false;
+
 </script>
 
 
