@@ -5,8 +5,10 @@
     <CategoryListView on:changeView={changeView} />
   {:else if currentView === "CategoryDetailView"}
     <CategoryDetailView on:changeView={changeView} categoryName={viewData.name} />
-  {:else if currentView === "PracticeView"}
-    <PracticeView on:changeView={changeView}/>
+  {:else if currentView === "WordDetailView"}
+    <WordDetailView on:changeView={changeView}/>
+  {:else if currentView === "TrainingWordsView"}
+    <TrainingWordsView on:changeView={changeView}/>
   {/if}
 </div>
 
@@ -15,7 +17,8 @@
   import CollectionListView from './views/CollectionListView.svelte';
   import CategoryListView from './views/CategoryListView.svelte';
   import CategoryDetailView from './views/CategoryDetailView.svelte';
-  import PracticeView from './views/PracticeView.svelte';
+  import WordDetailView from './views/WordDetailView.svelte';
+  import TrainingWordsView from './views/TrainingWordsView.svelte';
 
   export let currentView
   export let viewData

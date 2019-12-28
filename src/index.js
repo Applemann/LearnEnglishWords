@@ -24,7 +24,7 @@ var app = new App({
 	props: {
     //currentView: "CollectionListView",
     //currentView: "CategoryDetailView",
-    currentView: "PracticeView",
+    currentView: "TrainingWordsView",
     viewData: { name: "Food", wordsNum: 150 }
 	}
 });

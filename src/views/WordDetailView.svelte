@@ -41,27 +41,14 @@
   </tr>
 </table>
 
-{#if !wallVisible}
-<div class="wall" out:fly="{{ y: 2000, duration: 10000 }}">
-  <div class="wall-text">
-    <Title>
-      Rekni co si myslis, ze dane slovicko znamena..
-    </Title>
-  </div>
-  <Button id="check-button" on:click={() => { wallVisible = true}}>
-    Zkontrolovat
-  </Button>
-</div>
-{/if}
+<Wall />
 
 
 <script>
   import Container from '../common/Container.svelte';
   import Title from '../common/Title.svelte';
   import Button from '../common/Button.svelte';
-	import { fade, fly } from 'svelte/transition';
-
-  let wallVisible = false;
+  import Wall from '../components/Wall.svelte';
 </script>
 
 
@@ -74,25 +61,8 @@
       border-width: 3pt
   }
 
-  :global(#check-button) {
-      background-color: green;
-  }
-
   ul {
     text-align: left;
-  }
-
-  .wall {
-    background-color: blue;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 130pt;
-  }
-
-  .wall-text {
-    text-align: center;
-    margin: 50pt;
   }
 
   .sense {
