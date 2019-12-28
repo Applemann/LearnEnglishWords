@@ -5,6 +5,7 @@ export default class Word {
     this.sound = "";
     this.sense = [];
     this.examples = [];
+    this.known = "";
   }
   toString() {
     return this.text;

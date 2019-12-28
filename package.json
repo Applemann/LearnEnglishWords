@@ -30,10 +30,16 @@
       "cordova-plugin-globalization": {},
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-network-information": {},
-      "cordova-plugin-vibration": {}
-    }
+      "cordova-plugin-vibration": {},
+      "cordova-sqlite-storage": {}
+    },
+    "platforms": [
+      "android"
+    ]
   },
   "dependencies": {
+    "cordova-android": "^8.1.0",
+    "cordova-sqlite-storage": "^4.0.0",
     "css-loader": "^3.3.2",
     "style-loader": "^1.0.2",
     "svelte": "^3.16.4",

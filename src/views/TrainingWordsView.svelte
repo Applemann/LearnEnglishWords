@@ -26,6 +26,8 @@
   import Word from '../models/Word.js';
 
   export let wordList = [] 
+
+  let currentVisible = 0;
   let wallVisible = true;
 
   function nextWord(number) {

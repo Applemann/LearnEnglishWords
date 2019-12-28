@@ -1,35 +1,33 @@
 {#if visible}
+  <div style="width: {width}">
+    <Container>
+      <Title><b>{word.text}</b></Title>
 
-<div style="width: {width}">
-  <Container>
-    <Title><b>{word.text}</b></Title>
-
-    <div class="sound">[ {word.pronunciation} ]   &#x1F509;</div>
-  </Container>
+      <div class="sound">[ {word.pronunciation} ]   &#x1F509;</div>
+    </Container>
 
 
-  <center>
-    <Container label="Vyznamy:" paddingTop="15pt">
-      <div class="sense descriptions">
-        <ul>
-          {#each word.sense as sense}
-            <li> {sense} </li>
+    <center>
+      <Container label="Vyznamy:" paddingTop="15pt">
+        <div class="sense descriptions">
+          <ul>
+            {#each word.sense as sense}
+              <li> {sense} </li>
+            {/each}
+          </ul>
+        </div>
+      </Container>
+
+      <Container label="Priklady:" paddingTop="10pt">
+        <ul class="descriptions">
+          {#each word.examples as example}
+            <li> {example} </li>
           {/each}
         </ul>
-      </div>
-    </Container>
+      </Container>
 
-    <Container label="Priklady:" paddingTop="10pt">
-      <ul class="descriptions">
-        {#each word.examples as example}
-          <li> {example} </li>
-        {/each}
-      </ul>
-    </Container>
-
-  </center>
-</div>
-
+    </center>
+  </div>
 {/if}
 
 

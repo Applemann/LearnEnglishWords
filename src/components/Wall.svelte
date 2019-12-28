@@ -6,7 +6,7 @@
       Rekni co si myslis, ze dane slovicko znamena..
     </Title>
   </div>
-  <Button id="check-button" on:click={() => { visible = false}}>
+  <Button id="check-button" on:click={() => visible = false}>
     Zkontrolovat
   </Button>
 </div>
@@ -17,6 +17,7 @@
 	import { fade, fly } from 'svelte/transition';
   import Title from '../common/Title.svelte';
   import Button from '../common/Button.svelte';
+  import WordRepository from '../repositories/WordRepository.js';
 
   export let visible = true;
 </script>

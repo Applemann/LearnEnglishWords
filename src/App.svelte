@@ -16,11 +16,13 @@
   import CategoryListView from './views/CategoryListView.svelte';
   import CategoryDetailView from './views/CategoryDetailView.svelte';
   import TrainingWordsView from './views/TrainingWordsView.svelte';
+  import Database from './Database.js';
 
   export let currentView
   export let viewData
 
   let history = [];
+  let database;
 
   document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -31,11 +33,14 @@
   function setView(view, data) {
     history.push(currentView);
     currentView = view;
-    viewData = data
+    viewData = data;
   }
 
   function onDeviceReady() {
     document.addEventListener("backbutton", onBackKeyDown, false);
+    database = new Database();
+    database.write("newPersistentFile.txt", "ahoj ;)", () => console.log("zapsano"))
+    database.read("newPersistentFile.txt", (result) => console.log("Result is: " + result))
   }
 
   function onBackKeyDown() {
