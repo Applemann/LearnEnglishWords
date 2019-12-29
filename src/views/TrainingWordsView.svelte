@@ -5,9 +5,9 @@
     </td>
     <td> 
       <center>
-        {#each wordList as word, id}
-          <WordDetail width="60%" word={word} visible={currentVisible === id}/>
-        {/each}
+          {#each wordList as word, id}
+            <WordDetail width="60%" word={word} visible={currentVisible === id}/>
+          {/each}
       </center>
     </td>
     <td> 
@@ -16,7 +16,9 @@
   </tr>
 </table>
 
+<!--
 <Wall bind:visible={wallVisible} />
+-->
 <QuestionDialog />
 
 <script>
@@ -24,14 +26,21 @@
   import Wall from '../components/Wall.svelte';
   import QuestionDialog from '../components/QuestionDialog.svelte';
   import Word from '../models/Word.js';
+  import WordRepository from '../repositories/WordRepository.js';
 
-  export let wordList = [] 
+  export let wordList = new WordRepository().getWords();
 
   let currentVisible = 0;
   let wallVisible = true;
 
   function nextWord(number) {
     currentVisible += number
+    if (wordList.length == currentVisible) {
+      currentVisible = 0;
+    }
+    if (currentVisible == -1) {
+      currentVisible = wordList.length - 1;
+    }
     wallVisible = true;
   }
 </script>
@@ -52,5 +61,9 @@
   }
   .right {
     right: 0pt;
+  }
+  table {
+    width: 100%;
+    height: 70%;
   }
 </style>

@@ -38,7 +38,7 @@
 
   export let width = "100%";
   export let word; 
-  export let visible = false;
+  export let visible = true;
 
 </script>
 
