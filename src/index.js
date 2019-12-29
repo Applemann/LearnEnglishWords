@@ -19,6 +19,8 @@
 
 import App from './App.svelte';
 
+const cTable = require('console.table');
+
 var app = new App({
 	target: document.querySelector("#view"),
 	props: {

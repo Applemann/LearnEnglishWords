@@ -39,8 +39,8 @@
   function onDeviceReady() {
     document.addEventListener("backbutton", onBackKeyDown, false);
     database = new Database();
-    database.write("newPersistentFile.txt", "ahoj ;)", () => console.log("zapsano"))
-    database.read("newPersistentFile.txt", (result) => console.log("Result is: " + result))
+    //database.write("newPersistentFile.txt", "ahoj ;)", () => console.log("zapsano"))
+    //database.read("newPersistentFile.txt", (result) => console.log("Result is: " + result))
   }
 
   function onBackKeyDown() {
