@@ -31,11 +31,11 @@
   import StatisticsTable from '../components/StatisticsTable.svelte';
   import ModeSelect from '../components/ModeSelect.svelte';
   import { createEventDispatcher } from 'svelte';
-
-  export let categoryName;
+  import { viewData } from '../store.js';
 
   const dispatch = createEventDispatcher();                              
 
+  let categoryName = $viewData.name;
   let limitList = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
   let wordLimit = 30;
 
@@ -47,7 +47,7 @@
   ]
 
   function startCategory() {
-    dispatch('changeView', {view: "PracticeView"})
+    dispatch('changeView', {view: "TrainingWordsView"})
   }
 </script>
 

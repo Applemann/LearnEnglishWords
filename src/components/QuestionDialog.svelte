@@ -1,4 +1,4 @@
-<h2 class="control-question"> Mel jsi pravdu? <br />Umis toto slovicko?: </h2>
+<h2 class="control-question"> <!--Mel jsi pravdu? --><br />Umis toto slovicko?: </h2>
 <table>
   <tr>
     <td> 

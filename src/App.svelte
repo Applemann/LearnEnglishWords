@@ -4,9 +4,9 @@
   {:else if currentView === "CategoryListView"}
     <CategoryListView on:changeView={changeView} />
   {:else if currentView === "CategoryDetailView"}
-    <CategoryDetailView on:changeView={changeView} categoryName={viewData.name} />
+    <CategoryDetailView on:changeView={changeView} />
   {:else if currentView === "TrainingWordsView"}
-    <TrainingWordsView on:changeView={changeView}/>
+    <TrainingWordsView on:changeView={changeView} />
   {/if}
 </div>
 
@@ -17,12 +17,14 @@
   import CategoryDetailView from './views/CategoryDetailView.svelte';
   import TrainingWordsView from './views/TrainingWordsView.svelte';
   import Database from './Database.js';
+  import { viewData } from './store.js';
 
   export let currentView
-  export let viewData
+  export let data
 
   let history = [];
   let database;
+  setView(currentView, data)
 
   document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -31,9 +33,9 @@
   }
 
   function setView(view, data) {
-    history.push(currentView);
+    history.push({view: view, data: data});
     currentView = view;
-    viewData = data;
+    viewData.set(data);
   }
 
   function onDeviceReady() {
@@ -44,8 +46,10 @@
   }
 
   function onBackKeyDown() {
-    if (history.length > 0) {
-      setView(history.pop());
+    if (history.length > 1) {
+      history.pop() //remove current view
+      let { view, data } = history.pop(); // get previous view
+      setView(view, data);
     }
   }
 </script>

@@ -24,10 +24,11 @@ const cTable = require('console.table');
 var app = new App({
 	target: document.querySelector("#view"),
 	props: {
-    //currentView: "CollectionListView",
+    currentView: "CollectionListView",
+    //currentView: "CategoryListView",
     //currentView: "CategoryDetailView",
-    currentView: "TrainingWordsView",
-    viewData: { name: "Food", wordsNum: 150 }
+    //currentView: "TrainingWordsView",
+    data: { name: "Food", wordsNum: 150 }
 	}
 });
 
