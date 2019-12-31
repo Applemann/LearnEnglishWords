@@ -1,5 +1,5 @@
 {#if label !== ""}
-<h2 style="padding-top: {paddingTop}">{label}</h2>
+<h2 on:click style="padding-top: {paddingTop}">{label}</h2>
 {/if}
 
 <center><slot></slot></center>

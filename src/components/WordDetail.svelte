@@ -1,9 +1,9 @@
 {#if visible}
-  <div style="width: {width}">
+  <div class="word-box" style="width: {width}">
     <Container>
       <Title><b>{word.text}</b></Title>
 
-      <div class="sound">[ {word.pronunciation} ]   &#x1F509;</div>
+      <div class="sound">[ {word.pronunciation} ]  &#x1F509;</div>
     </Container>
 
 
@@ -18,13 +18,17 @@
         </div>
       </Container>
 
-      <Container label="Priklady:" paddingTop="10pt">
-        <ul class="descriptions">
-          {#each word.examples as example}
-            <li> {example} </li>
-          {/each}
-        </ul>
-      </Container>
+      <div class="description-box">
+        <Container on:click="{() => showExample = !showExample}" label={showExample ? "▼ Priklady" : "▶  Priklady"} paddingTop="10pt">
+          {#if showExample}
+            <ul class="descriptions">
+              {#each word.examples as example}
+                <li> {example} </li>
+              {/each}
+            </ul>
+          {/if}
+        </Container>
+      </div>
 
     </center>
   </div>
@@ -39,11 +43,15 @@
   export let width = "100%";
   export let word; 
   export let visible = true;
+  let showExample = false;
 
 </script>
 
 
 <style>
+  .word-box {
+    padding-bottom: 80pt;
+  }
   .descriptions {
       background-color: white;
       padding: 5pt;

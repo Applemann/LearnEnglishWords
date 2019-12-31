@@ -19,7 +19,9 @@
 <!--
 <Wall bind:visible={wallVisible} />
 -->
-<QuestionDialog />
+<div class="question">
+  <QuestionDialog />
+</div>
 
 <script>
   import WordDetail from '../components/WordDetail.svelte';
@@ -46,6 +48,11 @@
 </script>
 
 <style>
+  .question {
+    position: absolute;
+    bottom: 30pt;
+    left: 8pt;
+  }
   .button {
     position: absolute;
     top: 0pt;
