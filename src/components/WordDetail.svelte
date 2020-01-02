@@ -68,6 +68,8 @@
   }
 
   .sound {
-     font-weight: bold;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    text-transform: lowercase;
   }
 </style>
