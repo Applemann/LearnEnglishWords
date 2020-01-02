@@ -38,6 +38,7 @@
     ]
   },
   "dependencies": {
+    "console.table": "^0.10.0",
     "cordova-android": "^8.1.0",
     "cordova-sqlite-storage": "^4.0.0",
     "css-loader": "^3.3.2",
