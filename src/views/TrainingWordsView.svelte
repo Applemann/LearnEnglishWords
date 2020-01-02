@@ -29,8 +29,13 @@
   import QuestionDialog from '../components/QuestionDialog.svelte';
   import Word from '../models/Word.js';
   import WordRepository from '../repositories/WordRepository.js';
+  import { onMount } from 'svelte';
 
-  export let wordList = new WordRepository().getWords();
+  export let wordList = []
+  var wordRepository = new WordRepository()
+  onMount(async () => {
+    wordList = await wordRepository.getWords();
+  });
 
   let currentVisible = 0;
   let wallVisible = true;
