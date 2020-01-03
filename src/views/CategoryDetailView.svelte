@@ -1,12 +1,12 @@
-<Title> {categoryName} </Title>
+<Title> {$viewData.name} </Title>
 
 <Container>
   <StatisticsTable />
 </Container>
 
 <Container label="Vyber si jednu z moznosti treninku:">
-  <ModeSelect>
-    {#each modes as {name, translation, visible}, id}
+  <ModeSelect bind:currentMode={currentMode}>
+    {#each modes as {name, translation, visible}}
       <li style="display: {visible ? 'block' : 'none'};"> <h2>{name}</h2> <h3>{translation}</h3></li>
     {/each}
   </ModeSelect>
@@ -35,9 +35,9 @@
 
   const dispatch = createEventDispatcher();                              
 
-  let categoryName = $viewData.name;
   let limitList = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
   let wordLimit = 30;
+  let currentMode = 0
 
   let modes = [
     {name: "Reading", translation: "(AJ -> CJ)", visible: true},
@@ -47,7 +47,7 @@
   ]
 
   function startCategory() {
-    dispatch('changeView', {view: "TrainingWordsView"})
+    dispatch('changeView', {view: "TrainingWordsView", data: {currentMode: currentMode}});
   }
 </script>
 
