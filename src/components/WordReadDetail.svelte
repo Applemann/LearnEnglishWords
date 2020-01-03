@@ -38,7 +38,6 @@
 <script>
   import Container from '../common/Container.svelte';
   import Title from '../common/Title.svelte';
-  import Button from '../common/Button.svelte';
 
   export let width = "100%";
   export let word; 

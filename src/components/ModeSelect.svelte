@@ -28,6 +28,7 @@
 <script>
   let disableLeft = true;
   let disableRight = false;
+  export let currentMode = 0;
 
   function buttonLeft() {
     let items = document.querySelector("#select-item-list").childNodes;
@@ -43,6 +44,7 @@
           disableLeft = i === 1;
           disableRight = false;
         }
+        currentMode = i-1;
         break;
       }
       i += 1;
@@ -64,6 +66,7 @@
           disableLeft = false;
           disableRight = i === 2;
         }
+        currentMode = i+1;
         break;
       }
       i += 1;

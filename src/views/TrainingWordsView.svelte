@@ -5,9 +5,14 @@
     </td>
     <td> 
       <center>
-          {#each wordList as word, id}
-            <WordDetail width="60%" word={word} visible={currentVisible === id}/>
-          {/each}
+        {#each wordList as word, id}
+          {#if $viewData.currentMode === 0}
+            <WordReadDetail width="60%" {word} visible={currentVisible === id}/>
+          {/if}
+          {#if $viewData.currentMode === 1 || $viewData.currentMode === 2}
+            <WordWriteDetail width="60%" {word} visible={currentVisible === id} mode={$viewData.currentMode}/>
+          {/if}
+        {/each}
       </center>
     </td>
     <td> 
@@ -16,20 +21,22 @@
   </tr>
 </table>
 
-<!--
-<Wall bind:visible={wallVisible} />
--->
+{#if $viewData.currentMode === 0}
 <div class="question">
   <QuestionDialog />
 </div>
+  <Wall bind:visible={wallVisible} />
+{/if}
 
 <script>
-  import WordDetail from '../components/WordDetail.svelte';
+  import WordReadDetail from '../components/WordReadDetail.svelte';
+  import WordWriteDetail from '../components/WordWriteDetail.svelte';
   import Wall from '../components/Wall.svelte';
   import QuestionDialog from '../components/QuestionDialog.svelte';
   import Word from '../models/Word.js';
   import WordRepository from '../repositories/WordRepository.js';
   import { onMount } from 'svelte';
+  import { viewData } from '../store.js';
 
   export let wordList = []
   var wordRepository = new WordRepository()
