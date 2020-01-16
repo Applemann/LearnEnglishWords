@@ -1,6 +1,6 @@
 
 {#if visible}
-<div class="wall" out:fly="{{ y: 2000, duration: 5000 }}">
+<div class="wall" out:fly|local="{{ y: 500, duration: 800, opacity: 100 }}">
   <div class="wall-text">
     <Title>
       Rekni co si myslis, ze dane slovicko znamena..

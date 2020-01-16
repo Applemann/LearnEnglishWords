@@ -47,7 +47,7 @@
 
   function onBackKeyDown() {
     if (history.length > 1) {
-      history.pop() //remove current view
+      history.pop(); //remove current view
       let { view, data } = history.pop(); // get previous view
       setView(view, data);
     }

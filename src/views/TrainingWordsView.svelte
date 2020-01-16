@@ -22,9 +22,9 @@
 </table>
 
 {#if $viewData.currentMode === 0}
-<div class="question">
-  <QuestionDialog />
-</div>
+  <div class="question">
+    <QuestionDialog />
+  </div>
   <Wall bind:visible={wallVisible} />
 {/if}
 
