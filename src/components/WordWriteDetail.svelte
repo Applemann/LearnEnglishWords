@@ -63,6 +63,12 @@
     }
 	}
 
+  function playSound() {
+    var audio = new Audio();
+    audio.src = `http://example.com/english-words/collections/basic/sounds/${word.text}.mp3`;
+    audio.play();
+  }
+
 </script>
 
 

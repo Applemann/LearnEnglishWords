@@ -1,4 +1,4 @@
-<Title> {$viewData.name} </Title>
+<Title> {categoryName} </Title>
 
 <Container>
   <StatisticsTable />
@@ -23,7 +23,6 @@
 
 <Button id="category-start-button" color="green" on:click="{startCategory}"> Start Category </Button>
 
-
 <script>
   import Title from '../common/Title.svelte';
   import Container from '../common/Container.svelte';
@@ -31,13 +30,14 @@
   import StatisticsTable from '../components/StatisticsTable.svelte';
   import ModeSelect from '../components/ModeSelect.svelte';
   import { createEventDispatcher } from 'svelte';
-  import { viewData } from '../store.js';
+  import { categoryData } from '../store.js';
 
   const dispatch = createEventDispatcher();                              
 
   let limitList = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
   let wordLimit = 30;
   let currentMode = 0
+  let categoryName = $categoryData.name.slice(6,-5)
 
   let modes = [
     {name: "Reading", translation: "(AJ -> CJ)", visible: true},

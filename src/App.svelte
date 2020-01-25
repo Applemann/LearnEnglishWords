@@ -18,7 +18,6 @@
   import TrainingWordsView from './views/TrainingWordsView.svelte';
   import Database from './Database.js';
   import { viewData } from './store.js';
-  import untar from "js-untar";
 
   export let currentView
   export let data
@@ -42,7 +41,6 @@
   function onDeviceReady() {
     document.addEventListener("backbutton", onBackKeyDown, false);
     database = new Database();
-    downloadBasicCollection();
     //database.write("newPersistentFile.txt", "ahoj ;)", () => console.log("zapsano"))
     //database.read("newPersistentFile.txt", (result) => console.log("Result is: " + result))
   }
@@ -53,31 +51,6 @@
       let { view, data } = history.pop(); // get previous view
       setView(view, data);
     }
-  }
-
-  async function downloadBasicCollection() {
-    const res = await fetch('http://drakeman.cz/english-words/collections/basic.tar');
-    var collection = await res.blob();
-
-    const reader = new FileReader();
-    reader.onload = function (event) {
-      untar(reader.result).then(
-        function (extractedFiles) { // onSuccess
-          console.log('Rozbaleno!!!!!!!!!!!!!', event);
-          //console.log(JSON.stringify(extractedFiles, null, 2));
-        },
-        function (err) {
-          onTarError('Untar Error', err);
-        }
-      )
-    };
-
-    reader.onerror = function (event) {
-      console.log('FileReader Error', event);
-      onTarError('FileReader Error', event);
-    };
-
-    reader.readAsArrayBuffer(collection);
   }
 
 </script>

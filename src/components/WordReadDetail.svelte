@@ -1,10 +1,12 @@
 {#if visible}
   <div class="word-box" style="width: {width}">
-    <Container>
-      <Title><b>{word.text}</b></Title>
+    <div id="word" on:click={playSound}>
+      <Container>
+        <Title><b>{word.text}</b></Title>
 
-      <div class="sound">[ {word.pronunciation} ]  &#x1F509;</div>
-    </Container>
+        <div class="sound">[ {word.pronunciation} ]  &#x1F509;</div>
+      </Container>
+    </div>
 
 
     <center>
@@ -44,6 +46,11 @@
   export let visible = true;
   let showExample = false;
 
+  function playSound() {
+    var audio = new Audio();
+    audio.src = `http://example.com/english-words/collections/basic/sounds/${word.text}.mp3`;
+    audio.play();
+  }
 </script>
 
 

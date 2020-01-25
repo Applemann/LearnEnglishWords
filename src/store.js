@@ -12,3 +12,5 @@ function createViewData() {
 }
 
 export const viewData = writable(0);
+export const collectionData = writable(0);
+export const categoryData = writable(0);

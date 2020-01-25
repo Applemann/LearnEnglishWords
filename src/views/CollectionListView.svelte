@@ -24,6 +24,7 @@
   import Title from '../common/Title.svelte';
   import Button from '../common/Button.svelte';
   import { createEventDispatcher } from 'svelte';
+  import WordRepository from '../repositories/WordRepository.js';
 
   export let selectedItem;
   export let title = "Select collection of words:";
@@ -32,7 +33,7 @@
 
   let buttons = {
     "download": { name: "Download", disabled: "true", handleFunc: () => {} },
-    "continue": { name: "Continue", disabled: "true", handleFunc: () => dispatch('changeView', {view: "CategoryListView"}) }
+    "continue": { name: "Continue", disabled: "true", handleFunc: continueButton }
   }
 
   const collectionItems = [
@@ -45,6 +46,12 @@
   function select(id) {
     selectedItem = id
     buttons.continue.disabled = "false";
+  }
+
+  function continueButton() {
+    dispatch('changeView', {view: "CategoryListView"});
+    var wordRepository = new WordRepository()
+    wordRepository.downloadBasicCollection();
   }
 </script>
 

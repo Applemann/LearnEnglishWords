@@ -25,7 +25,9 @@
   <div class="question">
     <QuestionDialog />
   </div>
-  <Wall bind:visible={wallVisible} />
+  <!--
+    <Wall bind:visible={wallVisible} />
+  -->
 {/if}
 
 <script>
@@ -36,13 +38,9 @@
   import Word from '../models/Word.js';
   import WordRepository from '../repositories/WordRepository.js';
   import { onMount } from 'svelte';
-  import { viewData } from '../store.js';
+  import { viewData, categoryData } from '../store.js';
 
-  export let wordList = []
-  var wordRepository = new WordRepository()
-  onMount(async () => {
-    wordList = await wordRepository.getWords();
-  });
+  export let wordList = $categoryData.readAsJSON()
 
   let currentVisible = 0;
   let wallVisible = true;
