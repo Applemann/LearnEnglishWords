@@ -1,3 +1,6 @@
+<div>
+  {currentVisible+1}/{wordList.length}
+</div>
 <table>
   <tr>
     <td> 

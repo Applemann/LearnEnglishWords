@@ -1,13 +1,14 @@
 {#if visible}
   <div class="word-box" style="width: {width}">
-
     {#if mode === 1}
       <Container>
         <Title><b>{word.sense.join("; ")}</b></Title>
       </Container>
     {:else if mode === 2}
       <Container label="Listen:" >
-        <Title><b>&#x1F509;</b></Title>
+        <div id="sound" on:click={playSound}>
+          <Title><b>&#x1F509;</b></Title>
+        </div>
       </Container>
     {/if}
 
@@ -50,16 +51,18 @@
   let result = "";
   
   function check() {
-    if (translate === "abcd") {
-      result = "Spravne"
+    document.querySelector("#translate-input").disabled = true;
+    if (translate === word.text) {
+      result = "Spravne ;-)"
     } else {
-      result = "Spatne"
+      result = "Spatne. Spravna odpoved je: " + word.text
     }
   }
 
 	function handleKeydown(event) {
     if (event.key === "Enter") {
       document.querySelector("#translate-input").blur();
+      check();
     }
 	}
 
