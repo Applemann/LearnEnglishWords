@@ -1,5 +1,5 @@
 <div>
-  {currentVisible+1}/{wordList.length}
+  {currentVisible+1}/{$viewData.wordLimit}
 </div>
 <table>
   <tr>
@@ -43,7 +43,7 @@
   import { onMount } from 'svelte';
   import { viewData, categoryData } from '../store.js';
 
-  export let wordList = $categoryData.readAsJSON()
+  export let wordList = $categoryData.readAsJSON().slice(0, $viewData.wordLimit)
 
   let currentVisible = 0;
   let wallVisible = true;

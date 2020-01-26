@@ -47,7 +47,7 @@
   ]
 
   function startCategory() {
-    dispatch('changeView', {view: "TrainingWordsView", data: {currentMode: currentMode}});
+    dispatch('changeView', {view: "TrainingWordsView", data: {wordLimit: wordLimit, currentMode: currentMode}});
   }
 </script>
 
