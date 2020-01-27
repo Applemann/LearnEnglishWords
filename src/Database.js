@@ -33,6 +33,13 @@ export default class Database {
     //});
   }
 
+
+  exists(path, success, error) {
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
+      fileSystem.root.getFile(path, { create: false }, success, error);
+    }, () => console.log(evt.target.error.code)); 
+  }
+
   read(file, callback) {
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
       fs.root.getFile(file, { create: true, exclusive: false }, 

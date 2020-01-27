@@ -41,6 +41,7 @@
     document.addEventListener("backbutton", onBackKeyDown, false);
     database = new Database();
     //database.write("newPersistentFile.txt", "ahoj ;)", () => console.log("zapsano"))
+    //database.exists("newPersistentFile.txt", () => console.log("existuje."), () => console.log("neexistuje"))
     //database.read("newPersistentFile.txt", (result) => console.log("Result is: " + result))
   }
 
