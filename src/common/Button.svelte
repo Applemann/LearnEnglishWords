@@ -1,9 +1,9 @@
-<div on:click {id} class="button" class:disabled={disabled === "true"}>
+<div on:click {id} class="button" class:disabled>
   <h3><slot></slot></h3>
 </div>
 
 <script>
-  export let disabled = "false";
+  export let disabled = false;
   export let id;
 </script>
 

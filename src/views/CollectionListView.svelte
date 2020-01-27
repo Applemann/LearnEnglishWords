@@ -2,17 +2,21 @@
 
 <div style="text-align:center; padding-top: 20pt; padding-right: 30pt">
   <ul id="collection-list" style="list-style-type: none;">
-    {#each collectionItems as {label, description}, id}
-      <li on:click={() => select(id)} class="download-selection-item" class:selected="{selectedItem === id}"> 
+    {#each collectionItems as {label, description, disabled}, id}
+      <li on:click={() => select(id, disabled) } class="download-selection-item" class:selected="{selectedItem === id}" class:disabled> 
         <h2>{label}</h2> 
       </li>
     {/each}
   </ul>
 </div>
 
-{#each collectionItems as {label, description}, id}
+{#each collectionItems as {label, description, disabled}, id}
   <div class="select-description" style="display: {selectedItem === id ? 'block' : 'none'};" >
-    {description}
+    {#if disabled}
+      Zatim neni k dispozici.
+    {:else}
+      {description}
+    {/if}
   </div>
 {/each}
 
@@ -32,20 +36,20 @@
   const dispatch = createEventDispatcher();
 
   let buttons = {
-    "download": { name: "Download", disabled: "true", handleFunc: () => {} },
-    "continue": { name: "Continue", disabled: "true", handleFunc: continueButton }
+    "download": { name: "Download", disabled: true, handleFunc: () => {} },
+    "continue": { name: "Continue", disabled: true, handleFunc: continueButton }
   }
 
   const collectionItems = [
-    {label: "Basic (1000 words)", description: "Obsahuje vsechna zakladni anglicka slovicka pro zakladni komunikaci a dorozumeni. "},
-    {label: "Standard (3000 words)", description: "Se znalosti 2500 az 3000 anglickych slov dokážete porozumět 90 % každodenní anglické konverzace, anglicky psaným novinám a časopisům."},
-    {label: "Student (5000 words)", description: "Specialni kolekce pro studenty. Obsahuje slovicka serazena do skupin podle lekci nejznamejsich ucebnic."},
-    {label: "Native (15000 words)", description: "Rodily mluvci ma celkem 10000 az 20000 slov v aktivni slovni zasobe. V teto kolekci jsou ty nejznamejsi z nich. (Doporucujeme stahovat az po projiti vsech predchozich kolekci)"}
+    {label: "Basic (1000 words)", description: "Obsahuje vsechna zakladni anglicka slovicka pro zakladni komunikaci a dorozumeni. ", disabled: false},
+    {label: "Standard (3000 words)", description: "Se znalosti 2500 az 3000 anglickych slov dokážete porozumět 90 % každodenní anglické konverzace, anglicky psaným novinám a časopisům.", disabled: true},
+    {label: "Student (5000 words)", description: "Specialni kolekce pro studenty. Obsahuje slovicka serazena do skupin podle lekci nejznamejsich ucebnic.", disabled: true},
+    {label: "Native (15000 words)", description: "Rodily mluvci ma celkem 10000 az 20000 slov v aktivni slovni zasobe. V teto kolekci jsou ty nejznamejsi z nich. (Doporucujeme stahovat az po projiti vsech predchozich kolekci)", disabled: true}
   ];
 
-  function select(id) {
+  function select(id, disabled) {
     selectedItem = id
-    buttons.continue.disabled = "false";
+    buttons.continue.disabled = disabled;
   }
 
   function continueButton() {
@@ -76,6 +80,12 @@
 
   .download-selection-item {
       background-color: MediumSeaGreen;
+      margin: 10pt;
+      padding: 5pt;
+  }
+
+  .disabled {
+      background-color: grey;
       margin: 10pt;
       padding: 5pt;
   }
