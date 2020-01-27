@@ -1,5 +1,5 @@
 <div>
-  {currentVisible+1}/{$viewData.wordLimit}
+  {currentVisible+1}/{$trainingData.limit}
 </div>
 <table>
   <tr>
@@ -9,11 +9,11 @@
     <td> 
       <center>
         {#each wordList as word, id}
-          {#if $viewData.currentMode === 0}
+          {#if $trainingData.mode === 0}
             <WordReadDetail width="60%" {word} visible={currentVisible === id}/>
           {/if}
-          {#if $viewData.currentMode === 1 || $viewData.currentMode === 2}
-            <WordWriteDetail width="60%" {word} visible={currentVisible === id} mode={$viewData.currentMode}/>
+          {#if $trainingData.mode === 1 || $trainingData.mode === 2}
+            <WordWriteDetail width="60%" {word} visible={currentVisible === id} mode={$trainingData.mode}/>
           {/if}
         {/each}
       </center>
@@ -24,7 +24,7 @@
   </tr>
 </table>
 
-{#if $viewData.currentMode === 0}
+{#if $trainingData.mode === 0}
   <div class="question">
     <QuestionDialog />
   </div>
@@ -41,9 +41,9 @@
   import Word from '../models/Word.js';
   import WordRepository from '../repositories/WordRepository.js';
   import { onMount } from 'svelte';
-  import { viewData, categoryData } from '../store.js';
+  import { trainingData, categoryData } from '../store.js';
 
-  export let wordList = $categoryData.readAsJSON().slice(0, $viewData.wordLimit)
+  export let wordList = $categoryData.readAsJSON().slice(0, $trainingData.limit)
 
   let currentVisible = 0;
   let wallVisible = true;

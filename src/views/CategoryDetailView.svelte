@@ -30,14 +30,14 @@
   import StatisticsTable from '../components/StatisticsTable.svelte';
   import ModeSelect from '../components/ModeSelect.svelte';
   import { createEventDispatcher } from 'svelte';
-  import { categoryData } from '../store.js';
+  import { trainingData, categoryData } from '../store.js';
 
   const dispatch = createEventDispatcher();                              
 
   let limitList = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
   let wordLimit = 30;
-  let currentMode = 0
-  let categoryName = $categoryData.name.slice(6,-5)
+  let currentMode = 0;
+  let categoryName = $categoryData.name.slice(6,-5);
 
   let modes = [
     {name: "Reading", translation: "(AJ -> CJ)", visible: true},
@@ -47,7 +47,10 @@
   ]
 
   function startCategory() {
-    dispatch('changeView', {view: "TrainingWordsView", data: {wordLimit: wordLimit, currentMode: currentMode}});
+    trainingData.setLimit(wordLimit); 
+    trainingData.setMode(currentMode); 
+    
+    dispatch('changeView', {view: "TrainingWordsView"});
   }
 </script>
 

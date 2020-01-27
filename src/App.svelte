@@ -17,7 +17,7 @@
   import CategoryDetailView from './views/CategoryDetailView.svelte';
   import TrainingWordsView from './views/TrainingWordsView.svelte';
   import Database from './Database.js';
-  import { viewData } from './store.js';
+  import { trainingData } from './store.js';
 
   export let currentView
   export let data
@@ -35,7 +35,6 @@
   function setView(view, data) {
     history.push({view: view, data: data});
     currentView = view;
-    viewData.set(data);
   }
 
   function onDeviceReady() {
